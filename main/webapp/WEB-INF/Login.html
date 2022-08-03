@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "_//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="US-ASCII">
+    <title>Login Page</title>
+</head>
+<body>
+<form action="LoginServlet" method="post">
+    Username : <input type="text" id="user" name="user">
+    <br>
+    <p class="user-error"></p>
+    <br>
+    Password : <input type="password" id="pwd" name="pwd">
+    <br>
+    <p class="pwd-error"></p>
+    <br>
+    <input type="submit" value="Login">
+</form>
+
+<script>
+    //validating name entered by user
+    const text = document.querySelector('#user');
+    const textError = document.querySelector('.user-error');
+    text.addEventListener('input', function() {
+        let nameRegex = RegExp('^[A-Za-z]{3,}$');
+        if(nameRegex.test(text.value))
+            textError.textContent="";
+        else
+            textError.textContent="*needed minimum 3 letters";
+    })
+
+    //validating password entered by user
+    const text = document.querySelector('#pwd');
+    const textError = document.querySelector('.pwd-error');
+    text.addEventListener('input', function() {
+        let pwdRegex = RegExp('^[A-Za-z]{8,}$');
+        if(pwdRegex.test(text.value))
+            textError.textContent="";
+        else
+            textError.textContent="*needed minimum 8 letters";
+    })
+
+</script>
+</body>
+</html>
